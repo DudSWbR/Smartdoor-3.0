@@ -16,8 +16,8 @@ services:
     container_name: backend
     build: ./backend
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
-    volumes:
-      - ./backend:/myapp/backend
+    environment:
+      DEVISE_JWT_SECRET_KEY: 784d753e9d896a894996a8c86f4666c05a97de7774a44c269fbf931fba8c4be73a029b7def71a179532e69d82079f05c0db649b430d4d432fa1111457d3fc438
     depends_on:
       - db
     ports:
@@ -31,16 +31,7 @@ services:
     volumes:
       - ./frontend:/myapp/frontend/dist
     ports:
-      - 80:80
- #   command: "yarn build"
- #   depends_on:
- #     - backend
-  # yaichi:
-  #   container_name: yaichi
-  #   image: mtsmfm/yaichi:1.5.0
-  #   ports:
-  #     - 80:3000
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
+      - 80:3000
+
 volumes:  
   database-data:

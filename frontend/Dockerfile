@@ -8,4 +8,5 @@ WORKDIR ./
 COPY . ./
 
 EXPOSE 80
+RUN apk add bash curl
 CMD ["yarn", "start"]
