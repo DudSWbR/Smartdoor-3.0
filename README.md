@@ -4,32 +4,8 @@
 
 **Here is an example application with the following modern web technology stacks. With this boilerplate, you can easily start to build your own app.**
 
-- [Ruby](https://www.ruby-lang.org/en/) 2.7.2
-- [Rails](https://rubyonrails.org/) 6.0.3
-- [React.js](https://reactjs.org/) 16.13.1
-- [TypeScript](https://www.typescriptlang.org/) 4.0.3
-- [Docker](https://docs.docker.com/)
-- [PostgreSQL](https://www.postgresql.org/) 11
-- [CircleCI](https://circleci.com/)
-
 ## Usage
 
-```shell
-$ git clone https://github.com/ohbarye/rails-react-typescript-docker-example.git && cd rails-react-typescript-docker-example
-
-# Setup
-$ docker-compose run frontend yarn
-$ docker-compose run backend bundle exec rake db:create
-
-# Start
-$ docker-compose up -d
-
-# Open frontend
-$ open http://localhost:80 # You'll see yaichi page, then click any app
-
-# Check backend API
-$ curl -H 'Host: backend.localhost' http://localhost/greetings/hello
-```
 
 ## Motivation
 
