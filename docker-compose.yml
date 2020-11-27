@@ -24,7 +24,9 @@ services:
       - 3000:3000
   frontend:
     container_name: frontend
-    build: ./frontend
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile-prod
     image: "node:12.18.1-alpine"
     user: "node"
     working_dir: /myapp/frontend/dist
