@@ -18,6 +18,7 @@ services:
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     environment:
       DEVISE_JWT_SECRET_KEY: 784d753e9d896a894996a8c86f4666c05a97de7774a44c269fbf931fba8c4be73a029b7def71a179532e69d82079f05c0db649b430d4d432fa1111457d3fc438
+      RAILS_ENV: production
     depends_on:
       - db
     ports:

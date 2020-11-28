@@ -1,7 +1,9 @@
 #build environment 
+FROM node:12.18.1-alpine
 WORKDIR /
 ENV PATH /node_modules/.bin:$PATH
 COPY package.json /package.json
+RUN apk add bash
 RUN yarn install
 RUN yarn add react-scripts@3.0.1 -g
 COPY . ./
