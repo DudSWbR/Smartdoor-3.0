@@ -29,12 +29,12 @@ services:
       context: ./frontend
       dockerfile: Dockerfile-prod
     image: "node:12.18.1-alpine"
-    user: "node"
+    #user: "node"
     working_dir: /myapp/frontend/dist
     volumes:
       - ./frontend:/myapp/frontend/dist
     ports:
-      - 80:3000
+      - 80:80
 
 volumes:  
   database-data:
