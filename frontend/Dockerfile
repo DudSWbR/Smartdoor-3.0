@@ -1,11 +1,11 @@
 FROM node:12.18.1-alpine
-WORKDIR ./
+WORKDIR /
 ENV PATH /node_modules/.bin:$PATH
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock /
 RUN yarn install
 RUN yarn build
-WORKDIR ./
-COPY . ./
+WORKDIR /
+COPY . /
 
 EXPOSE 80
 RUN apk add bash curl
