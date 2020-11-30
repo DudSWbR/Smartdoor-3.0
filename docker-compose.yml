@@ -23,18 +23,26 @@ services:
       - db
     ports:
       - 3000:3000
+  proxy:
+    container_name: proxy
+    build: ./proxy
+    ports: 
+      - 80:80
+    links:
+      - frontend
   frontend:
     container_name: frontend
     build: 
       context: ./frontend
       dockerfile: Dockerfile-prod
-    image: "node:12.18.1-alpine"
-    #user: "node"
     working_dir: /myapp/frontend/dist
     volumes:
       - ./frontend:/myapp/frontend/dist
     ports:
-      - 80:80
+      - 2323:2323
+    volumes:
+      - /app/node_modules
+      - ./frontend/:/app
 
 volumes:  
   database-data:
