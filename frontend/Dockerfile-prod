@@ -1,9 +1,16 @@
 #build environment 
-FROM node:12.18.1-alpine
-RUN mkdir -p /myapp/frontend
-WORKDIR /myapp/frontend
-ENV PATH myapp/frontend/node_modules/.bin:$PATH
+FROM node:12.18.1-alpine as build
+WORKDIR /
+ENV PATH /node_modules/.bin:$PATH
 COPY package.json /package.json
-RUN yarn
+RUN apk add bash
+RUN yarn install
+RUN yarn add react-scripts@3.0.1 -g
+COPY . /
 RUN yarn build
-COPY / /myapp/frontend
+
+#production environment
+FROM nginx:1.16.0-alpine
+COPY --from=build /build /usr/share/nginx/html
+EXPOSE 2323
+CMD [“nginx”, “-g”, “daemon off;”]
