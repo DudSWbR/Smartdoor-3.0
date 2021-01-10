@@ -1,7 +1,7 @@
-FROM node:12.18.1-alpine
+FROM node:12.20-alpine
 WORKDIR /myapp/frontend
 COPY package.json /myapp/frontend/
 RUN npm install
 COPY . /myapp/frontend/
-EXPOSE 4000
+EXPOSE 2323
 CMD ["npm", "start"]
