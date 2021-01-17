@@ -7,7 +7,7 @@
     "@material-ui/core": "^4.5.0",
     "@material-ui/styles": "^4.5.0",
     "@react-pdf/renderer": "^1.6.12",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "babel-plugin-root-import": "^6.4.1",
     "basic-auth": "^2.0.1",
     "customize-cra": "^0.8.0",
@@ -31,7 +31,7 @@
     "react-player": "^1.15.2",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
+    "react-scripts": "^4.0.1",
     "react-scroll": "^1.7.14",
     "react-select": "^3.0.8",
     "react-svg": "^10.0.22",
@@ -50,7 +50,7 @@
     "yup": "^0.28.0"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "PORT=2323 react-app-rewired start",
     "build": "NODE_OPTIONS='--max-old-space-size=2048' react-app-rewired build",
     "test": "cross-env NODE_ICU_DATA=node_modules/full-icu react-app-rewired test",
     "test:watch": "react-app-rewired test --watchAll",
@@ -101,8 +101,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
-    "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-conventional": "^8.2.0",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@hot-loader/react-dom": "^16.10.2",
     "@storybook/addon-centered": "^5.2.6",
     "@storybook/addon-info": "^5.2.6",

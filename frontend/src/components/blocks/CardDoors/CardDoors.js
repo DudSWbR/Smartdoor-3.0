@@ -38,12 +38,17 @@ export default function CardDoors({
   if (userRole(roleType) === 1) {
     TableHeaders.push("Abrir");
   }
-  TableHeaders.push("Editar");
+  if (mobile) {
+    TableHeaders.push("Edit.");
+  } else {
+    TableHeaders.push("Editar");
+  }
+
   if (userRole(roleType) === 0) {
     TableHeaders.push("Excluir");
   } else {
     if (mobile) {
-      TableHeaders.push("Desvinc.");
+      TableHeaders.push("Desv.");
     } else {
       TableHeaders.push("Desvincular");
     }

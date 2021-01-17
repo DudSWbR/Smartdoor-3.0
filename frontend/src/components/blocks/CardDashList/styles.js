@@ -11,6 +11,7 @@ export const Card = styled.div`
 `;
 
 export const CardHeader = styled(Grid)`
+  position: relative;
   padding: 20px;
   border-radius: 10px 10px 0 0;
   background: ${theme.palette.common.white};
@@ -23,9 +24,15 @@ export const CardTitle = styled.h3`
   span {
     font-size: 14px;
     color: ${theme.palette.primary.light};
+    display: block;
+    @media (min-width: ${theme.breakpoints.values.md}px) {
+      display: inline;
+    }
   }
 `;
 export const CardButton = styled(Button)`
+  position: absolute;
+  right: 20px;
   background: ${theme.palette.primary.light};
   color: ${theme.palette.common.white};
 `;
