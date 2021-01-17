@@ -8,12 +8,12 @@ export default function CardDashList({ title, heads, data, link, loading }) {
   return (
     <Card>
       <CardHeader container justify="space-between">
-        <Grid item>
+        <Grid item xs={8} sm={10}>
           <CardTitle>
             {title} <span>(5 últimos)</span>
           </CardTitle>
         </Grid>
-        <Grid item>
+        <Grid item xs={4} sm={2}>
           <Link to={link}>
             <CardButton size="small"> Ver todos</CardButton>
           </Link>

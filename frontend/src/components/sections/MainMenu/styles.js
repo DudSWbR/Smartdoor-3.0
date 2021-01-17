@@ -5,6 +5,7 @@ import theme from "~/styles/theme";
 export const MenuHolder = styled(Grid)`
   position: fixed;
   height: 76px;
+  z-index: 1;
   background: ${theme.palette.common.white};
   padding: 1rem;
   @media (min-width: ${theme.breakpoints.values.md}px) {

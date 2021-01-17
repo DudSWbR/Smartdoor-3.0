@@ -30,8 +30,8 @@ export default function ModalDoorDelete({ open, onClose, deleteId, onDelete }) {
           </TextCenter>
         </Margin>
       )}
-      <Grid container justify="space-evenly">
-        <Grid item>
+      <Grid container spacing={2} justify="space-between">
+        <Grid item xs={6}>
           <Button
             onClick={() => onClose()}
             variant="outlined"
@@ -41,7 +41,7 @@ export default function ModalDoorDelete({ open, onClose, deleteId, onDelete }) {
             Voltar
           </Button>
         </Grid>
-        <Grid item>
+        <Grid item xs={6}>
           <Button onClick={() => onDelete(deleteId)} size="full" type="submit">
             {`${userRole(roleType) === 0 ? "Excluir" : "Desvincular"}`}
           </Button>

@@ -4,8 +4,10 @@ import { Grid } from "@material-ui/core";
 import { CardDashGraph, CardDashList } from "~/components/blocks";
 import { Margin } from "~/components/elements";
 import { ChartsHolder } from "./styles";
+import isMobile from "~/hooks/isMobile";
 
 export default function DashboardCharts() {
+  const mobile = isMobile();
   const usersInfos = useSelector((state) => state.dashboard.users.usersInfos);
   const loadingUsers = useSelector(
     (state) => state.dashboard.users.loadingUsers
@@ -22,8 +24,8 @@ export default function DashboardCharts() {
       <Margin mb={3}>
         <CardDashGraph />
       </Margin>
-      <Grid container spacing={2} justify="space-between">
-        <Grid item sm={12} md={6}>
+      <Grid container spacing={2} justify={mobile ? "center" : "space-between"}>
+        <Grid item xs={12} md={6}>
           <CardDashList
             title="Credenciados"
             heads={["Nome Completo", "CPF", "Data de criação"]}
@@ -32,7 +34,7 @@ export default function DashboardCharts() {
             loading={loadingUsers}
           />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <CardDashList
             title="Acessos"
             heads={["Nome", "Acesso", "Porta"]}
