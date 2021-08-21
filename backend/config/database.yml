@@ -1,8 +1,8 @@
 development:
   adapter: postgresql
   database: smartdoor_development
-  #url: postgres://postgres@db
-  url: db
+  url: postgres://postgres@db
+  #url: db
   user: postgres
   password: 123456
   pool: 5
