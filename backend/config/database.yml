@@ -1,7 +1,8 @@
 development:
   adapter: postgresql
   database: smartdoor_development
-  url: postgres://postgres@db
+  #url: postgres://postgres@db
+  url: db
   user: postgres
   password: 123456
   pool: 5
@@ -17,7 +18,8 @@ test:
 production:
   adapter: postgresql
   database: smartdoor_production
-  url: postgres://postgres@db
+  #url: postgres://postgres@db
+  url: db
   user: postgres
   password: 123456
   pool: 5

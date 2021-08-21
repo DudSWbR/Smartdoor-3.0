@@ -1,5 +1,38 @@
 version: '3'
 services:
+  proxy:
+    build: ./proxy
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    labels:
+      com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
+    volumes:
+      - certs:/etc/nginx/certs:ro
+      - conf.d:/etc/nginx/conf.d
+      - vhost.d:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - proxy-tier
+    environment:
+      - HTTPS_METHOD=noredirect
+
+  letsencrypt-companion:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    restart: always
+    volumes:
+      - certs:/etc/nginx/certs
+      - conf.d:/etc/nginx/conf.d
+      - vhost.d:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - proxy-tier
+    depends_on:
+      - proxy
+
   db:
     image: "postgres"
     restart: always
@@ -10,7 +43,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - fpm_proxy-tier
+      - proxy-tier
       - default
 
   adminer:
@@ -19,7 +52,7 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - fpm_proxy-tier
+      - proxy-tier
       - default
 
   backend:
@@ -33,7 +66,7 @@ services:
     depends_on:
       - db
     networks:
-      - fpm_proxy-tier
+      - proxy-tier
       - default
     expose:
       - 3000
@@ -48,7 +81,7 @@ services:
     restart: always
     build: ./frontend
     networks:
-      - fpm_proxy-tier
+      - proxy-tier
       - default
     expose:
       - 5000
@@ -59,10 +92,15 @@ services:
       LETSENCRYPT_EMAIL: "alexander@ufpr.br"
 volumes:  
   database-data:
+  postgres:
+  certs:
+  conf.d:
+  vhost.d:
+  html:
 
 
 networks:
-  fpm_proxy-tier:
+  proxy-tier:
     external: 
       name: nginx-proxy
 
