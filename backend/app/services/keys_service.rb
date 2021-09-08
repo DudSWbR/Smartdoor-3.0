@@ -12,7 +12,7 @@ class KeysService
   end
 
   def nova_chave(req)
-    if (!(req[:type_access] == "insert")) 
+    if (!(req[:tipo] == "insert")) 
       return false
     end
     
