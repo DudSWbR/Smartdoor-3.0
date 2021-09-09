@@ -10,10 +10,15 @@ export default function FormDate({
   field1label,
   field2,
   field2label,
+  field3,
+  field3label,
+  field4,
+  field4label,
   action,
   onSubmit,
   schema,
   mask,
+  mask2,
 }) {
   const mobile = isMobile();
 
@@ -25,6 +30,14 @@ export default function FormDate({
   };
 
   const validationForm = (valid, values) => {
+    if (field3) {
+      return !(
+        ((values[field1] && values[field2]) ||
+          values[field3] ||
+          values[field4]) &&
+        valid
+      );
+    }
     if (Object.values(values).every((val) => val) && valid) {
       return false;
     }
@@ -57,7 +70,7 @@ export default function FormDate({
               spacing={2}
               justify={mobile ? "center" : "space-between"}
             >
-              <Grid item xs={12} sm={5} lg={5}>
+              <Grid item xs={12} sm={field3 ? 2 : 5}>
                 <Input
                   name={field1}
                   mask={mask}
@@ -68,7 +81,7 @@ export default function FormDate({
                   errors={errors[field1] && touched[field1] && errors[field1]}
                 />
               </Grid>
-              <Grid item xs={12} sm={5} lg={5}>
+              <Grid item xs={12} sm={field3 ? 2 : 5}>
                 <Input
                   name={field2}
                   mask={mask}
@@ -79,12 +92,36 @@ export default function FormDate({
                   errors={errors[field2] && touched[field2] && errors[field2]}
                 />
               </Grid>
+              {field3 && (
+                <Grid item xs={12} sm={3}>
+                  <Input
+                    name={field3}
+                    mask={mask2}
+                    placeholder={field3label}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values[field3]}
+                    errors={errors[field3] && touched[field3] && errors[field3]}
+                  />
+                </Grid>
+              )}
+              {field4 && (
+                <Grid item xs={12} sm={3}>
+                  <Input
+                    name={field4}
+                    placeholder={field4label}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values[field4]}
+                    errors={errors[field4] && touched[field4] && errors[field4]}
+                  />
+                </Grid>
+              )}
               <GridButton
                 mobile={mobile ? mobile : undefined}
                 item
                 xs={12}
                 sm={2}
-                lg={2}
               >
                 <Button
                   className={

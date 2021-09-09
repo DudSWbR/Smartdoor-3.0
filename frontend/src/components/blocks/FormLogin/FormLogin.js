@@ -59,6 +59,7 @@ function FormLogin() {
                     </InputAdornment>
                   ),
                 }}
+                transparent
               />
               <Margin mt={1} mb={4}>
                 <Input
@@ -79,6 +80,7 @@ function FormLogin() {
                       </InputAdornment>
                     ),
                   }}
+                  transparent
                 />
               </Margin>
 

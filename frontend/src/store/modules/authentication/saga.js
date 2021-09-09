@@ -25,6 +25,25 @@ export function* getAuthentication({ payload }) {
   }
 }
 
+export function* signUp({ payload }) {
+  try {
+    const { data } = yield call(apiNoAuth.post, `/signup`, payload);
+    yield put({ type: AuthenticationTypes.SUCCESS_SIGN_UP });
+    const login = {
+      values: {
+        username: data.username,
+        password: payload.user.password,
+      },
+    };
+    yield Toast("success", MESSAGE.successSignUp);
+    yield put({ type: AuthenticationTypes.GET_AUTHENTICATION, payload: login });
+  } catch (err) {
+    yield put({ type: AuthenticationTypes.FAILURE_SIGN_UP });
+    yield Toast("error", MESSAGE.errorSignUp);
+  }
+}
+
 export default function* saga() {
   yield takeLatest(AuthenticationTypes.GET_AUTHENTICATION, getAuthentication);
+  yield takeLatest(AuthenticationTypes.SEND_SIGN_UP, signUp);
 }

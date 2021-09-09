@@ -23,3 +23,12 @@ export const ImageHolder = styled.div`
     width: 100%;
   }
 `;
+
+export const SwitchText = styled.p`
+  margin-top: 16px;
+  text-align: center;
+  strong {
+    cursor: pointer;
+    color: ${theme.palette.background.blue};
+  }
+`;

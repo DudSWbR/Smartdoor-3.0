@@ -11,7 +11,12 @@ import {
 import { FormDate } from "~/components/blocks";
 import { TableCell, GridButton } from "./styles";
 import { schema } from "./validation";
-import { formatDateTimeToBr, formatCPF, dateMask } from "~/utils/tools";
+import {
+  formatDateTimeToBr,
+  formatCPF,
+  dateMask,
+  cpfMask,
+} from "~/utils/tools";
 import isMobile from "~/hooks/isMobile";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import PDF from "../../elements/PDF/PDF";
@@ -47,8 +52,13 @@ export default function CardAccesses({ filteredAccesses, reloadAllAccesses }) {
           field1label="Data inicial"
           field2="finalDate"
           field2label="Data final"
+          field3="cpf"
+          field3label="CPF"
+          field4="door"
+          field4label="Porta"
           action="Filtrar"
           mask={dateMask}
+          mask2={cpfMask}
           schema={schema}
           onSubmit={filteredAccesses}
         />

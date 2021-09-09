@@ -6,6 +6,11 @@ export const Types = {
 
   // logout
   PURGE_AUTHENTICATION: "authentication/PURGE_AUTHENTICATION",
+
+  // sign-up
+  SEND_SIGN_UP: "authentication/SEND_SIGN_UP",
+  SUCCESS_SIGN_UP: "authentication/SUCCESS_SIGN_UP",
+  FAILURE_SIGN_UP: "authentication/FAILURE_SIGN_UP",
 };
 
 export const Creators = {
@@ -20,4 +25,10 @@ export const Creators = {
   }),
   failureAuthentication: () => ({ type: Types.FAILURE_AUTHENTICATION }),
   purgeAuthentication: () => ({ type: Types.PURGE_AUTHENTICATION }),
+  signUp: (data) => ({
+    type: Types.SEND_SIGN_UP,
+    payload: data,
+  }),
+  successSignUp: () => ({ type: Types.SUCCESS_SIGN_UP }),
+  failureSignUp: () => ({ type: Types.FAILURE_SIGN_UP }),
 };

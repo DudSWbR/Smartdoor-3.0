@@ -45,6 +45,7 @@ export default function Input({
   textField,
   inputProps,
   autoComplete,
+  transparent,
 }) {
   function iconCondition() {
     if (icon === "SEARCH") {
@@ -183,6 +184,7 @@ export default function Input({
       errors={errors}
       disabled={disabled}
       textField={textField}
+      transparent={transparent}
     >
       {conditionInput()}
     </BoxInput>
@@ -210,6 +212,7 @@ Input.defaultProps = {
   textField: false,
   inputProps: {},
   autoComplete: "off",
+  transparent: false,
 };
 
 Input.propTypes = {
@@ -241,4 +244,5 @@ Input.propTypes = {
   textField: PropTypes.bool,
   inputProps: PropTypes.shape({}),
   autoComplete: PropTypes.string,
+  transparent: PropTypes.bool,
 };

@@ -12,6 +12,7 @@ export const BoxInput = styled.div`
     margin-top: 2px;
   }
   input {
+    background: ${(props) => (props.transparent ? "transparent" : "white")}
     font-family: ${theme.typography.fontFamily}
     border: 1px solid ${theme.palette.common.lightGrey};
     padding: 15px;

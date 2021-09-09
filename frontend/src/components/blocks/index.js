@@ -10,6 +10,7 @@ export { default as CardUsers } from "./CardUsers";
 export { default as FormDate } from "./FormDate";
 export { default as FormDoor } from "./FormDoor";
 export { default as FormLogin } from "./FormLogin";
+export { default as FormSignUp } from "./FormSignUp";
 export { default as FormUser } from "./FormUser";
 export { default as ModalDoorDelete } from "./ModalDoorDelete";
 export { default as ModalDoorOpen } from "./ModalDoorOpen";

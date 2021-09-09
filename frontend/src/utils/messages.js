@@ -1,4 +1,4 @@
-export default {
+const messages = {
   cepValidation: "Digite o cep corretamente",
   requiredField: "Campo obrigatório",
   errorSendData: "Erro ao enviar as informações",
@@ -24,6 +24,8 @@ export default {
     "O serial deve conter apenas letras minúsculas e números",
   routePrivate: "Você precisa estar logado para acessar esse conteúdo",
   errorLogin: "Usuário ou senha incorretos",
+  successSignUp: "Usuário cadastrado, fazendo login.",
+  errorSignUp: "Houve um erro ao cadastrar o usuário",
   deleteSelf: "Você não pode excluir seu próprio usuário.",
   saveScheduleSuccess: "Horário salvo com sucesso",
   saveScheduleFail: "Houve um problema ao salvar o horário",
@@ -31,3 +33,4 @@ export default {
   deleteScheduleFail: "Houve um problema ao excluir o horário",
   replicateSchedules: "Horários replicados, não esqueça de salvar",
 };
+export default messages;

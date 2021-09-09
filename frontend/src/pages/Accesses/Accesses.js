@@ -5,15 +5,25 @@ import { PageHeader, CardAccesses } from "~/components/blocks";
 import { Margin } from "~/components/elements";
 import { Background, PadGrid } from "./styles";
 import { Creators as AccessesActions } from "~/store/modules/accesses/actions";
-import { scrollTop, formatDateStringToSend } from "~/utils/tools";
+import {
+  scrollTop,
+  formatDateStringToSend,
+  removeMaskString,
+} from "~/utils/tools";
 
 export default function Accesses() {
   const dispatch = useDispatch();
 
   const filteredAccesses = (values) => {
     const payload = {
-      initialDate: formatDateStringToSend(values.initialDate),
-      finalDate: formatDateStringToSend(values.finalDate),
+      initialDate: values.initialDate
+        ? formatDateStringToSend(values.initialDate)
+        : "",
+      finalDate: values.finalDate
+        ? formatDateStringToSend(values.finalDate)
+        : "",
+      cpf: values.cpf ? removeMaskString(values.cpf) : "",
+      door: values.door || "",
     };
     dispatch(AccessesActions.getFilteredAccesses(payload));
   };

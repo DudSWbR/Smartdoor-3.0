@@ -1,5 +1,6 @@
 import * as Yup from "yup";
 import moment from "moment";
+import { cpfValidation } from "~/utils/tools";
 import MESSAGE from "~/utils/messages";
 
 export const schema = Yup.object().shape({
@@ -14,8 +15,19 @@ export const schema = Yup.object().shape({
     )
     .test("is-greater", MESSAGE.greaterDate, function(value) {
       const { initialDate } = this.parent;
-      return moment(value, "dd/mm/yyyy").isSameOrAfter(
-        moment(initialDate, "dd/mm/yyyy")
-      );
+      if (value)
+        return moment(value, "dd/mm/yyyy").isSameOrAfter(
+          moment(initialDate, "dd/mm/yyyy")
+        );
+      return true;
     }),
+  cpf: Yup.mixed().test({
+    name: "cpf",
+    message: MESSAGE.invalidCPF,
+    test: (value) => {
+      if (value) return cpfValidation(value);
+      return true;
+    },
+  }),
+  door: Yup.string(),
 });

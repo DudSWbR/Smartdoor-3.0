@@ -17,10 +17,13 @@ export function* getAccesses() {
   }
 }
 export function* getFilteredAccesses({ payload }) {
+  const { initialDate, finalDate, cpf, door } = payload;
   try {
     const { data } = yield call(
       api.get,
-      `/accesses?datainicial=${payload.initialDate}&datafinal=${payload.finalDate}`
+      `/accesses?${initialDate ? `datainicial=${initialDate}&` : ""}${
+        finalDate ? `datafinal=${finalDate}&` : ""
+      }${cpf ? `cpf=${cpf}&` : ""}${door ? `porta=${door}` : ""}`
     );
     yield put({
       type: AccessesTypes.GET_FILTERED_ACCESSES_SUCCESS,
