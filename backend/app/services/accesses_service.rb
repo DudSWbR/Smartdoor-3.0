@@ -13,8 +13,19 @@ class AccessesService
     return Access.joins(:door, :user).where("doors.domain = ? and users.id = ?", @current_user.domain, @current_user.id)
   end
   
-  def list_accesses_filter(initial_date, final_date) 
-    return list_accesses.where("accesses.created_at >= ? and accesses.created_at <= ?" , 
+  def list_accesses_filter(initial_date, final_date, door_identification = nil, cpf = nil)
+    filtro_adicional = ""
+    if door_identification.present?
+      porta = Door.find_by(identification: door_identification)
+      filtro_adicional += " and door_id = #{porta.id} " if porta.present? 
+    end
+
+    if cpf.present?
+      user = User.find_by(cpf: cpf)
+      filtro_adicional += " and user_id = #{user.id}" if user.present? 
+    end
+
+    return list_accesses.where("accesses.created_at >= ? and accesses.created_at <= ?" + filtro_adicional , 
       initial_date.change(hour:0, min:0, sec:0), 
       final_date.change(hour:23, min:59, sec:59) + 5.hours)
       #não sei pq diabos as datas são salvas com +5 horas. Assim, as vezes 
