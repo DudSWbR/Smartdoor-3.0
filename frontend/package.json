@@ -57,6 +57,7 @@
     "eject": "react-scripts eject",
     "coverage": "cross-env NODE_ICU_DATA=node_modules/full-icu react-app-rewired test --coverage --watchAll=false",
     "storybook": "start-storybook",
+    "start:clean": "rm -rf node_modules/ && rm -rf yarn.lock && yarn && yarn start",
     "commit": "git-cz",
     "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
@@ -119,6 +120,8 @@
     "eslint": "^6.5.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.4.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-config-react-app": "^6.0.0",
     "eslint-import-resolver-babel-plugin-root-import": "^1.1.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",

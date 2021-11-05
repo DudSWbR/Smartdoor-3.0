@@ -52,7 +52,7 @@ const theme = createMuiTheme({
       blue: "#03014a",
       lilac: "#e4e3ff",
       darkBlue: "linear-gradient(87deg,#172b4d 0,#1a174d 100%)",
-      green: "linear-gradient(87deg, #7fb7ba 0, #548c91 100%)",
+      green: "linear-gradient(135deg, #1ff8d4 0, #27e174 100%)",
       greenish: "#f7fafc",
       grey: "#f8f9fe",
     },

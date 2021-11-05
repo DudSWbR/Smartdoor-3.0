@@ -144,6 +144,7 @@ export default function FormSignUp() {
                 errors={errors.password && touched.password && errors.password}
                 margin="normal"
                 transparent
+                type="password"
                 autoComplete="none"
               />
             </Margin>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Grid } from "@material-ui/core";
 import { FormLogin, FormSignUp } from "~/components/blocks";
 import * as S from "./styles";
-import logo from "~/assets/img/smartdoor_logo_completa.png";
+import logo from "~/assets/img/sd-logo-column-spaced.png";
 import { scrollTop } from "~/utils/tools";
 
 export default function Login() {
@@ -17,7 +17,7 @@ export default function Login() {
       <S.LowerDiv>
         <S.ContainerStyle>
           <Grid container justify="center">
-            <Grid item xs={10} sm={7} lg={4}>
+            <S.GridStyle item xs={10} sm={7} lg={4}>
               <S.ImageHolder>
                 <img src={logo} alt="SmartDoor" />
               </S.ImageHolder>
@@ -38,7 +38,7 @@ export default function Login() {
                   </S.SwitchText>
                 </>
               )}
-            </Grid>
+            </S.GridStyle>
           </Grid>
         </S.ContainerStyle>
       </S.LowerDiv>
