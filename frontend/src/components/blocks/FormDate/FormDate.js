@@ -68,7 +68,7 @@ export default function FormDate({
             <Grid
               container
               spacing={2}
-              justify={mobile ? "center" : "space-between"}
+              justifyContent={mobile ? "center" : "space-between"}
             >
               <Grid item xs={12} sm={field3 ? 2 : 5}>
                 <Input

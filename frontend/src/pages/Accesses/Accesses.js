@@ -45,7 +45,7 @@ export default function Accesses() {
           <Margin mb={3}>
             <PageHeader title="Acessos" />
           </Margin>
-          <PadGrid container spacing={2} justify="space-evenly">
+          <PadGrid container spacing={2} justifyContent="space-evenly">
             <CardAccesses
               filteredAccesses={filteredAccesses}
               reloadAllAccesses={reloadAllAccesses}

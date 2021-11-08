@@ -1,6 +1,6 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core/styles";
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     fontFamily: "Open Sans",
     fontDisplay: "swap",
@@ -16,6 +16,9 @@ const theme = createMuiTheme({
   },
   palette: {
     common: {
+      turquoise: "#1ff8d4",
+      green: "#27e174",
+      blue: "#1a174d",
       bgModal: "rgba(0,0,0,0.5)",
       black: "#212529",
       white: "#fff",
@@ -49,7 +52,7 @@ const theme = createMuiTheme({
       main: "#488EFF",
     },
     background: {
-      blue: "#03014a",
+      blue: "#1a174d",
       lilac: "#e4e3ff",
       darkBlue: "linear-gradient(87deg,#172b4d 0,#1a174d 100%)",
       green: "linear-gradient(135deg, #1ff8d4 0, #27e174 100%)",

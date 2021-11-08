@@ -39,7 +39,7 @@ export default function CardDashGraph() {
         xValueFormatString: "DD/MM",
         type: "spline",
         dataPoints: data,
-        color: theme.palette.primary.light,
+        color: theme.palette.common.green,
       },
     ],
   };

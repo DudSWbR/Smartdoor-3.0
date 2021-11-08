@@ -29,10 +29,13 @@ export function* getAccessesInfos() {
           cell3: a.door.description,
         });
       });
+      console.log(accessesInfos, data);
       yield put({
         type: DashboardTypes.GET_ACCESSES_INFOS_SUCCESS,
         payload: accessesInfos,
       });
+    } else {
+      yield put({ type: DashboardTypes.GET_ACCESSES_INFOS_FAIL });
     }
   } catch (err) {
     yield put({ type: DashboardTypes.GET_ACCESSES_INFOS_FAIL });

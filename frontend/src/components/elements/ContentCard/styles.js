@@ -25,6 +25,7 @@ export const CardTitle = styled.h2`
 
 export const ContentHolder = styled.div`
   padding: 24px;
-  background: ${theme.palette.background.greenish};
+  background: ${theme.palette.common.white};
   border-radius: ${(props) => (props.round ? "0 0 10px 10px" : "10px")};
+  border: 1px solid black;
 `;

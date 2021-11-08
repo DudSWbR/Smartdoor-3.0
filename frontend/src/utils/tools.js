@@ -176,3 +176,13 @@ export function userRole(user) {
     }
   }
 }
+export function translateRole(user) {
+  switch (user) {
+    case "admin":
+      return "Administrador";
+    case "superuser":
+      return "Supervisor";
+    default:
+      return "Usuário";
+  }
+}

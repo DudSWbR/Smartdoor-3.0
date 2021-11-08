@@ -92,7 +92,7 @@ export default function CardAccesses({ filteredAccesses, reloadAllAccesses }) {
           <Grid
             container
             spacing={2}
-            justify={mobile ? "space-evenly" : "flex-end"}
+            justifyContent={mobile ? "space-evenly" : "flex-end"}
           >
             <GridButton item>
               <Button

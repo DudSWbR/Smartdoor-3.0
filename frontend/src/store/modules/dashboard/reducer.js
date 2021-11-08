@@ -66,16 +66,16 @@ export default function dashboard(state = INITIAL_STATE, action) {
         break;
       }
       case DashboardTypes.GET_ACCESSES_HISTORY: {
-        draft.history.loadingHistory = true;
+        draft.history.loadingAccesses = true;
         break;
       }
       case DashboardTypes.GET_ACCESSES_HISTORY_SUCCESS: {
-        draft.history.loadingHistory = false;
+        draft.history.loadingAccesses = false;
         draft.history.accessesHistory = action.payload;
         break;
       }
       case DashboardTypes.GET_ACCESSES_HISTORY_FAIL: {
-        draft.history.loadingHistory = false;
+        draft.history.loadingAccesses = false;
         draft.history.accessesHistory = null;
         break;
       }

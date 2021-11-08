@@ -18,7 +18,7 @@ import {
   MenuIconHolder,
 } from "./styles";
 import menuToggler from "~/assets/img/navbar-toggler.svg";
-import smallLogo from "~/assets/img/smartdoor_logo.png";
+import smallLogo from "~/assets/img/sd-logo-row.png";
 import iconPerson from "~/assets/img/usuario.png";
 import isMobile from "~/hooks/isMobile";
 import { Creators as AuthenticationActions } from "~/store/modules/authentication/actions";
@@ -38,7 +38,7 @@ export default function MainMenu() {
     <>
       <MenuHolder
         container
-        justify={mobile ? "space-between" : "center"}
+        justifyContent={mobile ? "space-between" : "center"}
         alignItems="center"
       >
         {mobile && (

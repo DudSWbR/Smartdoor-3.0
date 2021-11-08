@@ -9,7 +9,7 @@ export default function PageHeader({ title }) {
 
   return (
     <UserHolder>
-      <Grid container justify="space-between">
+      <Grid container justifyContent="space-between">
         <Grid item>
           <PageTitle>{title}</PageTitle>
         </Grid>

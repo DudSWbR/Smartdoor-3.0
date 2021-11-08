@@ -30,7 +30,7 @@ export default function ModalDoorDelete({ open, onClose, deleteId, onDelete }) {
           </TextCenter>
         </Margin>
       )}
-      <Grid container spacing={2} justify="space-between">
+      <Grid container spacing={2} justifyContent="space-between">
         <Grid item xs={6}>
           <Button
             onClick={() => onClose()}

@@ -16,7 +16,7 @@ export default function Login() {
       <S.UpperDiv />
       <S.LowerDiv>
         <S.ContainerStyle>
-          <Grid container justify="center">
+          <Grid container justifyContent="center">
             <S.GridStyle item xs={10} sm={7} lg={4}>
               <S.ImageHolder>
                 <img src={logo} alt="SmartDoor" />

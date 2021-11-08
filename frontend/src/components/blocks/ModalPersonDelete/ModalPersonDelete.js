@@ -33,7 +33,7 @@ export default function ModalPersonDelete({
           </TextCenter>
         </Margin>
       )}
-      <Grid container justify="space-evenly">
+      <Grid container justifyContent="space-evenly">
         <Grid item>
           <Button
             onClick={() => onClose()}

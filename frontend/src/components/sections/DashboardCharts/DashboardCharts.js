@@ -6,7 +6,7 @@ import { Margin } from "~/components/elements";
 import { ChartsHolder } from "./styles";
 import isMobile from "~/hooks/isMobile";
 
-export default function DashboardCharts() {
+export default function DashboardCharts({ userRole }) {
   const mobile = isMobile();
   const usersInfos = useSelector((state) => state.dashboard.users.usersInfos);
   const loadingUsers = useSelector(
@@ -24,17 +24,23 @@ export default function DashboardCharts() {
       <Margin mb={3}>
         <CardDashGraph />
       </Margin>
-      <Grid container spacing={2} justify={mobile ? "center" : "space-between"}>
-        <Grid item xs={12} md={6}>
-          <CardDashList
-            title="Credenciados"
-            heads={["Nome Completo", "CPF", "Data de criação"]}
-            data={usersInfos}
-            link="/users"
-            loading={loadingUsers}
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
+      <Grid
+        container
+        spacing={2}
+        justifyContent={mobile ? "center" : "space-between"}
+      >
+        {userRole !== "user" && (
+          <Grid item xs={12} md={6}>
+            <CardDashList
+              title="Credenciados"
+              heads={["Nome Completo", "CPF", "Data de criação"]}
+              data={usersInfos}
+              link="/users"
+              loading={loadingUsers}
+            />
+          </Grid>
+        )}
+        <Grid item xs={12} md={userRole === "user" ? 12 : 6}>
           <CardDashList
             title="Acessos"
             heads={["Nome", "Acesso", "Porta"]}

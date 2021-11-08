@@ -12,7 +12,7 @@ export default function DashboardInfos() {
   return (
     <>
       <ContentHolder>
-        <Grid container spacing={2} justify="space-between">
+        <Grid container spacing={2} justifyContent="space-between">
           <Grid item xs={12} md={6} lg={3}>
             <CardInfo
               title="Usuários"

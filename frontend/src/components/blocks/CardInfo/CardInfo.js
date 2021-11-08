@@ -28,7 +28,7 @@ export default function CardInfo({ title, value, icon, color }) {
 
   return (
     <Card>
-      <Grid container justify="space-between">
+      <Grid container justifyContent="space-between">
         <CardDivider item>
           <Margin mb={1}>
             <CardTitle>{title}</CardTitle>

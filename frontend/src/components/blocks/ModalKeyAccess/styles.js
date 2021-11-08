@@ -44,7 +44,7 @@ right: 15px;
 height: 30px;
 width: 30px;
 border-radius: 50%;
-background: ${theme.palette.secondary.main}
+background: ${theme.palette.common.green}
 cursor: pointer;
 margin: 0 auto;
   text-align: center;
@@ -119,7 +119,7 @@ export const ReplicateDayCheck = styled.div`
   width: 33%;
   height: 100%;
   background: ${(props) =>
-    props.checked ? theme.palette.common.success : theme.palette.common.grey};
+    props.checked ? theme.palette.common.green : theme.palette.common.grey};
   vertical-align: middle;
   text-align: center;
   padding: 6px;

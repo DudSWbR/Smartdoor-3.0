@@ -8,8 +8,7 @@ export const Tab = styled.table`
 export const TabHead = styled.thead`
     border-top: 1px solid ${theme.palette.common.lightGrey}
     border-bottom: 1px solid ${theme.palette.common.lightGrey}
-    color: ${theme.palette.common.lightGrey};
-    background: ${theme.palette.background.greenish}
+    color: ${theme.palette.common.blue};
 `;
 
 export const HeadCell = styled.th`

@@ -7,7 +7,7 @@ import { Card, CardHeader, CardTitle, CardButton, TableCell } from "./styles";
 export default function CardDashList({ title, heads, data, link, loading }) {
   return (
     <Card>
-      <CardHeader container justify="space-between">
+      <CardHeader container justifyContent="space-between">
         <Grid item xs={8} sm={10}>
           <CardTitle>
             {title} <span>(5 últimos)</span>

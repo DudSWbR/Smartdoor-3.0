@@ -206,7 +206,7 @@ export default function ModalKeyAccess({ open, onClose, accessId }) {
         <ModalContentHolder>
           <TabsHolder
             container
-            justify={mobile ? "flex-start" : "space-evenly"}
+            justifyContent={mobile ? "flex-start" : "space-evenly"}
           >
             {permissions &&
               permissions.length > 0 &&
@@ -252,7 +252,7 @@ export default function ModalKeyAccess({ open, onClose, accessId }) {
                   <SchedulesHolder
                     container
                     spacing={2}
-                    justify={mobile ? "center" : "flex-start"}
+                    justifyContent={mobile ? "center" : "flex-start"}
                   >
                     {schedules &&
                       schedules.length > 0 &&
@@ -302,7 +302,7 @@ export default function ModalKeyAccess({ open, onClose, accessId }) {
                       ))}
                   </ReplicateHolder>
                 </Margin>
-                <Grid container justify="flex-end">
+                <Grid container justifyContent="flex-end">
                   <Grid item>
                     <Button
                       onClick={() => handleReplicate()}
@@ -323,7 +323,7 @@ export default function ModalKeyAccess({ open, onClose, accessId }) {
           </AccessSettingsHolder>
         </ModalContentHolder>
       </Margin>
-      <Grid container justify="flex-end">
+      <Grid container justifyContent="flex-end">
         <Grid item>
           <Button
             onClick={() => handleSubmit()}

@@ -34,8 +34,8 @@ export const IconHolder = styled.div`
   justify-content: center;
   background: ${(props) =>
     props.color === "primary"
-      ? theme.palette.primary.main
-      : theme.palette.secondary.main};
+      ? theme.palette.common.blue
+      : theme.palette.common.green};
   svg {
     height: 20px;
     width: auto;

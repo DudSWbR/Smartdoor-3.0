@@ -16,6 +16,6 @@ export const BoxInput = styled.div`
 
 export const SelectInput = styled(Select)`
   svg {
-    color: ${theme.palette.primary.light};
+    color: ${theme.palette.common.blue};
   }
 `;

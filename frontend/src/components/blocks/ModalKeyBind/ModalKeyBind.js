@@ -112,7 +112,7 @@ export default function ModalKeyBind({ open, onClose, bindId }) {
           onChange={(event) => setAccessDescription(event.target.value)}
         />
       </Margin>
-      <Grid container justify="flex-end">
+      <Grid container justifyContent="flex-end">
         <Grid item>
           <Button
             onClick={() => handleSubmit()}

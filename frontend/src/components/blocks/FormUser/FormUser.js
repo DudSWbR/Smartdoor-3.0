@@ -5,7 +5,12 @@ import { Input, Select, Margin, Button, Loading } from "~/components/elements";
 import { Box, HiddenInput, ClickP } from "./styles";
 import { Formik } from "formik";
 import { schema } from "./validation";
-import { userRole, cpfMask, removeMaskString } from "~/utils/tools";
+import {
+  userRole,
+  translateRole,
+  cpfMask,
+  removeMaskString,
+} from "~/utils/tools";
 import { Creators as UsersActions } from "~/store/modules/users/actions";
 
 export default function FormUser({ initial }) {
@@ -68,8 +73,11 @@ export default function FormUser({ initial }) {
       username: initial && initial.username ? initial.username : "",
       roletype:
         initial && initial.roletype
-          ? userRole(initial.roletype)
-          : userRole(roleType),
+          ? {
+              value: userRole(initial.roletype),
+              label: translateRole(initial.roletype),
+            }
+          : { label: "Tipo de usuário" },
       domain: initial && initial.domain ? initial.domain : userDomain,
     });
   }, [userDomain, initial, roleType]);
@@ -97,149 +105,161 @@ export default function FormUser({ initial }) {
         handleSubmit,
         setFieldValue,
         isValid,
-      }) => (
-        <form onSubmit={handleSubmit} autoComplete="off">
-          <Box>
-            <Margin mb={2}>
-              <Input
-                placeholder="Nome"
-                htmlFor="name"
-                name="name"
-                value={values.name}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                errors={errors.name && touched.name && errors.name}
-                margin="normal"
-              />
-            </Margin>
-            <Margin mt={1} mb={2}>
-              <Input
-                placeholder="Sobrenome"
-                htmlFor="surname"
-                name="surname"
-                value={values.surname}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                errors={errors.surname && touched.surname && errors.surname}
-                margin="normal"
-              />
-            </Margin>
-            <Margin mt={1} mb={2}>
-              <Input
-                placeholder="C.P.F."
-                htmlFor="cpf"
-                name="cpf"
-                mask={cpfMask}
-                value={values.cpf}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                errors={errors.cpf && touched.cpf && errors.cpf}
-                margin="normal"
-              />
-            </Margin>
-            <Margin mt={1} mb={2}>
-              <Input
-                placeholder="Email"
-                htmlFor="email"
-                name="email"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                errors={errors.email && touched.email && errors.email}
-                margin="normal"
-              />
-            </Margin>
-
-            <Margin mt={1} mb={2}>
-              <Input
-                placeholder="Nome de usuário"
-                htmlFor="username"
-                name="username"
-                value={values.username}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                errors={errors.username && touched.username && errors.username}
-                margin="normal"
-                autoComplete="none"
-              />
-            </Margin>
-            {!changePass && initial && (
-              <ClickP onClick={() => setChangePass(true)}>Alterar senha</ClickP>
-            )}
-            {((changePass && initial) || (!changePass && !initial)) && (
-              <>
-                <Margin mt={1} mb={2}>
-                  <Input
-                    type="password"
-                    placeholder={initial ? "Nova senha" : "Senha"}
-                    htmlFor="password"
-                    name="password"
-                    value={values.password}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    errors={
-                      errors.password && touched.password && errors.password
-                    }
-                    margin="normal"
-                    autoComplete="new-password"
-                  />
-                </Margin>
-                <Margin mt={1} mb={2}>
-                  <Input
-                    type="password"
-                    placeholder={`Confirme a ${initial ? "nova " : ""}senha`}
-                    htmlFor="confirmPassword"
-                    name="confirmPassword"
-                    value={values.confirmPassword}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    errors={
-                      errors.confirmPassword &&
-                      touched.confirmPassword &&
-                      errors.confirmPassword
-                    }
-                    margin="normal"
-                    autoComplete="new-password"
-                  />
-                </Margin>
-              </>
-            )}
-            {changePass && initial && (
-              <ClickP onClick={() => setChangePass(false)}>
-                Cancelar alterar senha
-              </ClickP>
-            )}
-            {(userRole(roleType) === 0 || userRole(roleType) === 1) && (
-              <Margin mt={1} mb={2}>
-                <Select
-                  name="roletype"
-                  placeholder="Tipo de usuário"
-                  onChange={setFieldValue}
+      }) => {
+        return (
+          <form onSubmit={handleSubmit} autoComplete="off">
+            <Box>
+              <Margin mb={2}>
+                <Input
+                  placeholder="Nome"
+                  htmlFor="name"
+                  name="name"
+                  value={values.name}
+                  onChange={handleChange}
                   onBlur={handleBlur}
-                  errors={
-                    errors.roletype && touched.roletype && errors.roletype
-                  }
-                  value={values.roletype}
-                  options={userTypeOptions}
+                  errors={errors.name && touched.name && errors.name}
+                  margin="normal"
                 />
               </Margin>
-            )}
-            <HiddenInput name="domain" value={values.domain} />
-            <Button
-              className={
-                validationForm(isValid, values) || loading
-                  ? "button-chat animation-size"
-                  : "button-chat"
-              }
-              disabled={validationForm(isValid, values) || loading}
-              type="submit"
-              size="full"
-            >
-              {loading ? <Loading button /> : initial ? "Editar" : "Cadastrar"}
-            </Button>
-          </Box>
-        </form>
-      )}
+              <Margin mt={1} mb={2}>
+                <Input
+                  placeholder="Sobrenome"
+                  htmlFor="surname"
+                  name="surname"
+                  value={values.surname}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  errors={errors.surname && touched.surname && errors.surname}
+                  margin="normal"
+                />
+              </Margin>
+              <Margin mt={1} mb={2}>
+                <Input
+                  placeholder="C.P.F."
+                  htmlFor="cpf"
+                  name="cpf"
+                  mask={cpfMask}
+                  value={values.cpf}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  errors={errors.cpf && touched.cpf && errors.cpf}
+                  margin="normal"
+                />
+              </Margin>
+              <Margin mt={1} mb={2}>
+                <Input
+                  placeholder="Email"
+                  htmlFor="email"
+                  name="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  errors={errors.email && touched.email && errors.email}
+                  margin="normal"
+                />
+              </Margin>
+
+              <Margin mt={1} mb={2}>
+                <Input
+                  placeholder="Nome de usuário"
+                  htmlFor="username"
+                  name="username"
+                  value={values.username}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  errors={
+                    errors.username && touched.username && errors.username
+                  }
+                  margin="normal"
+                  autoComplete="none"
+                />
+              </Margin>
+              {!changePass && initial && (
+                <ClickP onClick={() => setChangePass(true)}>
+                  Alterar senha
+                </ClickP>
+              )}
+              {((changePass && initial) || (!changePass && !initial)) && (
+                <>
+                  <Margin mt={1} mb={2}>
+                    <Input
+                      type="password"
+                      placeholder={initial ? "Nova senha" : "Senha"}
+                      htmlFor="password"
+                      name="password"
+                      value={values.password}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      errors={
+                        errors.password && touched.password && errors.password
+                      }
+                      margin="normal"
+                      autoComplete="new-password"
+                    />
+                  </Margin>
+                  <Margin mt={1} mb={2}>
+                    <Input
+                      type="password"
+                      placeholder={`Confirme a ${initial ? "nova " : ""}senha`}
+                      htmlFor="confirmPassword"
+                      name="confirmPassword"
+                      value={values.confirmPassword}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      errors={
+                        errors.confirmPassword &&
+                        touched.confirmPassword &&
+                        errors.confirmPassword
+                      }
+                      margin="normal"
+                      autoComplete="new-password"
+                    />
+                  </Margin>
+                </>
+              )}
+              {changePass && initial && (
+                <ClickP onClick={() => setChangePass(false)}>
+                  Cancelar alterar senha
+                </ClickP>
+              )}
+              {(userRole(roleType) === 0 || userRole(roleType) === 1) && (
+                <Margin mt={1} mb={2}>
+                  <Select
+                    name="roletype"
+                    placeholder="Tipo de usuário"
+                    onChange={setFieldValue}
+                    onBlur={handleBlur}
+                    errors={
+                      errors.roletype && touched.roletype && errors.roletype
+                    }
+                    value={values.roletype}
+                    options={userTypeOptions}
+                  />
+                </Margin>
+              )}
+              <HiddenInput name="domain" value={values.domain} />
+              <Button
+                className={
+                  validationForm(isValid, values) || loading
+                    ? "button-chat animation-size"
+                    : "button-chat"
+                }
+                disabled={validationForm(isValid, values) || loading}
+                type="submit"
+                size="full"
+              >
+                {loading ? (
+                  <Loading button />
+                ) : initial ? (
+                  "Editar"
+                ) : (
+                  "Cadastrar"
+                )}
+              </Button>
+            </Box>
+          </form>
+        );
+      }}
     </Formik>
   );
 }

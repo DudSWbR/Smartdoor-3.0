@@ -41,7 +41,7 @@ function Keys() {
           <Margin mb={3}>
             <PageHeader title="Chaves" />
           </Margin>
-          <PadGrid container spacing={2} justify="space-evenly">
+          <PadGrid container spacing={2} justifyContent="space-evenly">
             <CardKeys
               openModalBind={() => openModalBind(true)}
               openModalAccess={() => openModalAccess(true)}

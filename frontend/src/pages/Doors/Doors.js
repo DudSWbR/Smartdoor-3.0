@@ -52,7 +52,7 @@ function Doors() {
           <Margin mb={3}>
             <PageHeader title="Portas" />
           </Margin>
-          <PadGrid container spacing={2} justify="space-evenly">
+          <PadGrid container spacing={2} justifyContent="space-evenly">
             <CardDoors
               openModalDelete={() => openModalDelete(true)}
               openModalOpen={() => openModalOpen(true)}

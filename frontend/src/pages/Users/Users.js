@@ -49,7 +49,7 @@ function Users() {
           <Margin mb={3}>
             <PageHeader title="Usuários" />
           </Margin>
-          <PadGrid container spacing={2} justify="space-evenly">
+          <PadGrid container spacing={2} justifyContent="space-evenly">
             <CardUsers
               openModalDelete={() => openModalDelete(true)}
               setDeleteId={(id) => setDeleteId(id)}

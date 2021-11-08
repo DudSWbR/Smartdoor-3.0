@@ -33,7 +33,7 @@ export const CardTitle = styled.h3`
 export const CardButton = styled(Button)`
   position: absolute;
   right: 20px;
-  background: ${theme.palette.primary.light};
+  background: ${theme.palette.background.blue};
   color: ${theme.palette.common.white};
 `;
 

@@ -11,7 +11,7 @@ export const IconHolder = styled.div`
     height: 100%;
     width: 100%;
     path {
-      color: ${theme.palette.primary.light};
+      color: ${theme.palette.common.blue};
     }
   }
 `;

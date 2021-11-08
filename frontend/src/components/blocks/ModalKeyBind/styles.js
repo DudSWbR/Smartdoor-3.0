@@ -25,11 +25,11 @@ export const UserSelectionCard = styled.div`
       : theme.palette.common.black};
   padding: 15px;
   background: ${(props) =>
-    props.selected ? theme.palette.primary.dark : theme.palette.common.white};
+    props.selected ? theme.palette.common.blue : theme.palette.common.white};
   border: 1px solid
     ${(props) =>
       props.selected
-        ? theme.palette.primary.dark
+        ? theme.palette.common.blue
         : theme.palette.common.lighter};
 `;
 
@@ -40,7 +40,7 @@ export const IconHolder = styled.div`
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background: ${theme.palette.secondary.main}
+  background: ${theme.palette.common.green}
   cursor: pointer;
   margin: 0 auto;
   text-align: center;
