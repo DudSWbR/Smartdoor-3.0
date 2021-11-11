@@ -11,6 +11,7 @@ import {
   Accesses,
   Error404,
   Login,
+  VirtualDoor,
 } from "~/pages";
 
 const Routes = () => {
@@ -35,6 +36,9 @@ const Routes = () => {
 
           {/* Acessos */}
           <PrivateRoute exact path="/accesses" component={Accesses} />
+
+          {/* Porta Virtual */}
+          <Route exact path="/porta-virtual" component={VirtualDoor} />
 
           {/* Erro */}
           <Route component={Error404} />

@@ -5,6 +5,7 @@ import dashboard from "./modules/dashboard/reducer";
 import doors from "./modules/doors/reducer";
 import keys from "./modules/keys/reducer";
 import users from "./modules/users/reducer";
+import virtualDoor from "./modules/virtualDoor/reducer";
 
 export default combineReducers({
   authentication,
@@ -13,4 +14,5 @@ export default combineReducers({
   doors,
   keys,
   users,
+  virtualDoor,
 });
