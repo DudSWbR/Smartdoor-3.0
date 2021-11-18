@@ -13,11 +13,11 @@ class AccessesService
     return Access.joins(:door, :user).where("doors.domain = ? and users.id = ?", @current_user.domain, @current_user.id)
   end
   
-  def list_accesses_filter(initial_date, final_date, door_identification = nil, cpf = nil)
+  def list_accesses_filter(initial_date, final_date, door_name = nil, cpf = nil)
     filtro_adicional = ""
-    if door_identification.present?
-      porta = Door.find_by(identification: door_identification)
-      filtro_adicional += " and door_id = #{porta.id} " if porta.present? 
+    if door_name.present?
+      portas = DoorsService.new(@current_user).list_doors.where("description like ?", "%#{door_name}%")
+      filtro_adicional += " and door_id in (#{portas.map{|e| e.id }.join(", ")}) " if portas.present? 
     end
 
     if cpf.present?

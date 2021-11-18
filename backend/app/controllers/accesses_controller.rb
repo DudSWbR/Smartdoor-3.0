@@ -14,13 +14,15 @@ class AccessesController < ApplicationController
     else
       datainicial = accesses_filter_params['datainicial'].to_datetime if accesses_filter_params['datainicial'].present?
       datafinal = accesses_filter_params['datafinal'].to_datetime if accesses_filter_params['datafinal'].present?
-      porta = accesses_filter_params['cpf'].present? ? accesses_filter_params['porta'] : nil
+      nome_porta = accesses_filter_params['porta'].present? ? accesses_filter_params['porta'] : nil
       cpf = accesses_filter_params['cpf'].present? ? accesses_filter_params['cpf'] : nil
+
+
 
       @accesses = @accessesService.list_accesses_filter(
         datainicial || DateTime.new(2020,1,1), 
         datafinal || DateTime.new(2099,12,31),
-        porta,
+        nome_porta,
         cpf)
     end
 
