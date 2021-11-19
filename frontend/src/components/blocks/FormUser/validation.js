@@ -23,7 +23,8 @@ export const schema = (roleType, passwordRequired) => {
     username: Yup.string()
       .min(5, MESSAGE.userMinChar)
       .max(20, MESSAGE.userMaxChar)
-      .matches(/^[a-z0-9]+$/, MESSAGE.userWrongChar),
+      .matches(/^[a-z0-9]+$/, MESSAGE.userWrongChar)
+      .required(MESSAGE.requiredField),
   };
   if (passwordRequired) {
     userSchema.password = Yup.string()
