@@ -28,7 +28,7 @@ services:
       - vhost.d:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:'
+    networks:
       - proxy-tier
     depends_on:
       - proxy
