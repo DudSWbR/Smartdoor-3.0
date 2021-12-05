@@ -7,7 +7,7 @@ class AccessesService
     if @current_user.admin?
       return Access.all.order('accesses.created_at DESC')
     end
-    if @current_user.superuser?v
+    if @current_user.superuser?
       return Access.joins(:door).where("doors.domain = ?", @current_user.domain).order('accesses.created_at DESC')
     end
     return Access.joins(:door, :user).where("doors.domain = ? and users.id = ?", @current_user.domain, @current_user.id).order('accesses.created_at DESC')
