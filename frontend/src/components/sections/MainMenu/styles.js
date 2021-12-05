@@ -17,7 +17,7 @@ export const MenuHolder = styled(Grid)`
 
 export const IconHolder = styled(Grid)`
   height: 40px;
-  width: 118px;
+  width: ${(props) => (props.width === "auto" ? "auto" : "40px")};
   cursor: pointer;
   img {
     height: 100%;

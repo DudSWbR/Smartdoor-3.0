@@ -46,7 +46,7 @@ export default function MainMenu() {
             <ReactSVG src={menuToggler} />
           </IconHolder>
         )}
-        <IconHolder cell="true">
+        <IconHolder cell="true" width="auto">
           <Link to="/dashboard">
             <img src={smallLogo} alt="SmartDoor" />
           </Link>

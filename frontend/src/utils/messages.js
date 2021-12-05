@@ -32,5 +32,9 @@ const messages = {
   deleteScheduleSuccess: "Horário excluído com sucesso",
   deleteScheduleFail: "Houve um problema ao excluir o horário",
   replicateSchedules: "Horários replicados, não esqueça de salvar",
+  successOpenDoor: "Acesso liberado",
+  errorOpenDoor: "Acesso negado",
+  successTagRegister: "Chave registrada",
+  errorTagRegister: "Chave não registrada",
 };
 export default messages;
