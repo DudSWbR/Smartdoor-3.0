@@ -50,7 +50,8 @@
     "yup": "^0.28.0"
   },
   "scripts": {
-    "start": "HOST=0.0.0.0 PORT=2323 react-app-rewired start",
+    "start": "npm install -g serve && serve -s build",
+    "start:old": "HOST=0.0.0.0 PORT=2323 react-app-rewired start",
     "build": "NODE_OPTIONS='--max-old-space-size=2048' react-app-rewired build",
     "test": "cross-env NODE_ICU_DATA=node_modules/full-icu react-app-rewired test",
     "test:watch": "react-app-rewired test --watchAll",
