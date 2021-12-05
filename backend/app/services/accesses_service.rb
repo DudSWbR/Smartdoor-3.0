@@ -5,12 +5,12 @@ class AccessesService
 
   def list_accesses
     if @current_user.admin?
-      return Access.all.order('created_at DESC')
+      return Access.all.order('accesses.created_at DESC')
     end
-    if @current_user.superuser?
-      return Access.joins(:door).where("doors.domain = ?", @current_user.domain).order('created_at DESC')
+    if @current_user.superuser?v
+      return Access.joins(:door).where("doors.domain = ?", @current_user.domain).order('accesses.created_at DESC')
     end
-    return Access.joins(:door, :user).where("doors.domain = ? and users.id = ?", @current_user.domain, @current_user.id).order('created_at DESC')
+    return Access.joins(:door, :user).where("doors.domain = ? and users.id = ?", @current_user.domain, @current_user.id).order('accesses.created_at DESC')
   end
   
   def list_accesses_filter(initial_date, final_date, door_name = nil, cpf = nil)
