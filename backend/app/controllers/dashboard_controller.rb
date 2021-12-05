@@ -32,6 +32,6 @@ class DashboardController < ApplicationController
   end
 
   def accesscount
-    render json: @accessesService.list_accesses_filter(DateTime.now - 5.days, DateTime.now).group_by_day(:created_at).count.to_json
+    render json: @accessesService.list_accesses_filter(DateTime.now - 5.days, DateTime.now).group('accesses.created_at').group_by_day('accesses.created_at').count.to_json
   end
 end
