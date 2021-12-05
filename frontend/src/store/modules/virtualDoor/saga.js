@@ -12,8 +12,14 @@ export function* sendOpenDoor({ payload }) {
       api.get,
       `/v1.0/rfid/solicitaentrada?door_identification=${doorValue}&key_code=${tagValue}&type_access=entrada`
     );
-    yield put({ type: VirtualDoorTypes.SEND_OPEN_DOOR_SUCCESS });
-    yield Toast("success", data);
+    const { acesso } = data;
+    if (acesso !== "NOK") {
+      yield put({ type: VirtualDoorTypes.SEND_OPEN_DOOR_SUCCESS });
+      yield Toast("success", MESSAGE.successOpenDoor);
+    } else {
+      yield put({ type: VirtualDoorTypes.SEND_OPEN_DOOR_FAIL });
+      yield Toast("error", MESSAGE.errorOpenDoor);
+    }
   } catch (err) {
     yield put({ type: VirtualDoorTypes.SEND_OPEN_DOOR_FAIL });
     yield Toast("error", MESSAGE.errorSendData);
@@ -27,8 +33,11 @@ export function* sendRegisterTag({ payload }) {
       api.get,
       `/v1.0/rfid/solicitaentrada?door_identification=${doorValue}&key_code=${tagValue}&tipo=insert`
     );
-    yield put({ type: VirtualDoorTypes.SEND_REGISTER_TAG_SUCCESS });
-    yield Toast("success", data);
+    const { acesso } = data;
+    if (acesso === "NOK") {
+      yield put({ type: VirtualDoorTypes.SEND_REGISTER_TAG_SUCCESS });
+      yield Toast("success", MESSAGE.successTagRegister);
+    }
   } catch (err) {
     yield put({ type: VirtualDoorTypes.SEND_REGISTER_TAG_FAIL });
     yield Toast("error", MESSAGE.errorSendData);
