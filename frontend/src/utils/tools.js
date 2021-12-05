@@ -2,16 +2,19 @@ import { animateScroll as scroll } from "react-scroll";
 import { format } from "date-fns";
 
 export function formatCPF(value) {
-  return value
-    .replace(/\D/g, "")
-    .replace(/(\d{3})(\d)/, "$1.$2")
-    .replace(/(\d{3})(\d)/, "$1.$2")
-    .replace(/(\d{3})(\d{1,2})/, "$1-$2")
-    .replace(/(-\d{2})\d+?$/, "$1");
+  return (
+    value &&
+    value
+      .replace(/\D/g, "")
+      .replace(/(\d{3})(\d)/, "$1.$2")
+      .replace(/(\d{3})(\d)/, "$1.$2")
+      .replace(/(\d{3})(\d{1,2})/, "$1-$2")
+      .replace(/(-\d{2})\d+?$/, "$1")
+  );
 }
 
 export function removeMaskString(value) {
-  return value.replace(/\D+/g, "");
+  return value && value.replace(/\D+/g, "");
 }
 
 export function limitText(text, limit = 80) {
