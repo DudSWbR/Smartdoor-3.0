@@ -112,3 +112,13 @@ Schedule.create(permission: permission, entry: time.change(hour: 18, min:0), exi
 permission = Permission.find(6)
 Schedule.create(permission: permission, entry: time.change(hour: 8, min:30), exit:time.change(hour: 12, min:0))
 
+users = User.where(domain: 2)
+doors = Door.where(domain: 2)
+(0..20).each do |day|
+    rand = Random.new.rand(10)
+    (0..rand).each do |acc|
+    Access.create(user: users[Random.new.rand(30) % users.count], 
+        door: doors[Random.new.rand(30) % doors.count], 
+        type_access: "Entrada", created_at: DateTime.now + 2.days - day.days)
+    end
+end
