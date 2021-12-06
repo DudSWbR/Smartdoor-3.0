@@ -25,6 +25,10 @@ export const IconHolder = styled(Grid)`
   }
   @media (min-width: ${theme.breakpoints.values.md}px) {
     margin: 0 auto 50px;
+    text-align: center;
+    img {
+      width: auto;
+    }
   }
 `;
 

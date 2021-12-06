@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Grid, TextField } from "@material-ui/core";
 import doorOpened from "~/assets/img/porta-aberta.jpg";
@@ -28,6 +28,23 @@ export default function VirtualDoor() {
   const handleCloseDoor = () => {
     dispatch(VirtualDoorActions.closeDoor());
   };
+
+  const checkDoor = useCallback(() => {
+    dispatch(VirtualDoorActions.checkOpenDoor({ doorValue }));
+  }, [dispatch, doorValue]);
+
+  useEffect(() => {
+    if (doorValue) {
+      checkDoor();
+    }
+    const interval = setInterval(() => {
+      checkDoor();
+    }, 5000);
+    if (doorState === "opened" || !doorValue) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [doorValue, checkDoor, doorState]);
 
   return (
     <S.container>

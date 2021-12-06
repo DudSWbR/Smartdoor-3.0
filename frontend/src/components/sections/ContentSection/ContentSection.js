@@ -1,11 +1,13 @@
 import React from "react";
-import { MenuSpacer, Content } from "./styles";
+import { GridNoWrap, MenuSpacer, Content } from "./styles";
+import isMobile from "~/hooks/isMobile";
 
 export default function ContentSection({ children }) {
+  const mobile = isMobile();
   return (
-    <div>
+    <GridNoWrap container direction={mobile ? "column" : "row"}>
       <MenuSpacer />
       <Content>{children}</Content>
-    </div>
+    </GridNoWrap>
   );
 }

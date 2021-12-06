@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Grid } from "@material-ui/core";
 import theme from "~/styles/theme";
 
 export const MenuSpacer = styled.div`
@@ -18,4 +19,8 @@ export const Content = styled.div`
     display: inline-block;
     width: calc(100vw - 200px);
   }
+`;
+
+export const GridNoWrap = styled(Grid)`
+  flex-wrap: nowrap;
 `;

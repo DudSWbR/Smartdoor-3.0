@@ -6,7 +6,6 @@ import MESSAGE from "~/utils/messages";
 
 export function* sendOpenDoor({ payload }) {
   const { doorValue, tagValue } = payload;
-  console.log(doorValue, tagValue);
   try {
     const { data } = yield call(
       api.get,
@@ -27,7 +26,6 @@ export function* sendOpenDoor({ payload }) {
 }
 export function* sendRegisterTag({ payload }) {
   const { doorValue, tagValue } = payload;
-  console.log(doorValue, tagValue);
   try {
     const { data } = yield call(
       api.get,
@@ -44,9 +42,29 @@ export function* sendRegisterTag({ payload }) {
   }
 }
 
+export function* checkOpenDoor({ payload }) {
+  const { doorValue } = payload;
+  try {
+    const { data } = yield call(
+      api.get,
+      `/v1.0/checar_solicitacoes/?door_identification=${doorValue}`
+    );
+    const { acesso } = data;
+    if (acesso !== "NOK") {
+      yield put({ type: VirtualDoorTypes.SEND_OPEN_DOOR_SUCCESS });
+      yield Toast("success", MESSAGE.successOpenDoor);
+    } else {
+      yield put({ type: VirtualDoorTypes.SEND_OPEN_DOOR_FAIL });
+    }
+  } catch (err) {
+    yield put({ type: VirtualDoorTypes.SEND_OPEN_DOOR_FAIL });
+    yield Toast("error", MESSAGE.errorSendData);
+  }
+}
 export default function* saga() {
   yield takeLatest(VirtualDoorTypes.SEND_OPEN_DOOR, sendOpenDoor);
   yield takeLatest(VirtualDoorTypes.SEND_REGISTER_TAG, sendRegisterTag);
+  yield takeLatest(VirtualDoorTypes.CHECK_OPEN_DOOR, checkOpenDoor);
 }
 
 // /v1.0/rfid/solicitaentrada?door_identification=13cf6ea93089f291b6093a30aae62d46&key_code=016a0edf6cc&type_access=entrada
